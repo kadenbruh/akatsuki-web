@@ -17,12 +17,26 @@ const getDisplayTitle = (userPrivileges: number): UserTitleDisplay | null => {
       text: "Core Development Team",
       color: "linear-gradient(90deg, #387EFC 0%, #C940FD 100%)",
     }
+  } else if (userPrivileges & UserPrivileges.AdminAccessRAP) {
+    return {
+      text: "Account Management",
+      color: "rgba(255, 180, 155, 1)",
+    }
+  } else if (userPrivileges & UserPrivileges.AdminChatMod) {
+    return {
+      text: "Community Support",
+      color: "rgba(255, 220, 155, 1)",
+    }
   } else if (userPrivileges & UserPrivileges.AdminManageNominators) {
     return {
       text: "Nomination Quality Assurance",
       color: "rgba(170, 154, 255, 1)",
     }
-  }
+  } else if (userPrivileges & UserPrivileges.AdminManageBeatmaps) {
+    return {
+      text: "Beatmap Nominators",
+      color: "rgba(255, 155, 240, 1)",
+    }
   // TODO: the many many others. And perhaps the concept of privilege groups.
   return null
 }
